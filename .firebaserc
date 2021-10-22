@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "sitio-personal"
+  },
+  "targets": {
+    "sitio-personal": {
+      "hosting": {
+        "prod": [
+          "andresvr"
+        ]
+      }
+    }
+  }
+}
