@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     padding: 20,
     display: "flex",
     flexDirection: "column",
-    margin: 10,
+    margin: 0,
     position: "relative",
   },
 });

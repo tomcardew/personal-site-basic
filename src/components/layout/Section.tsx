@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
   },
   titleLabel: {
     color: CONSTANTS.COLORS.primaryDark,
-    fontWeight: 700,
-    fontSize: 18,
+    fontWeight: 800,
+    fontSize: 20,
   },
 });
 

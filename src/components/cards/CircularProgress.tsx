@@ -12,7 +12,7 @@ const CircularProgress = ({ value = 0, label, icon }: ICircularProgress) => {
   return ( 
     <Col xl={2} lg={3} md={4} sm={6} xs={6}>
       <CircularProgressbarWithChildren
-        value={value}
+        value={100}
         styles={{
           path: {
             // Path color
@@ -28,25 +28,25 @@ const CircularProgress = ({ value = 0, label, icon }: ICircularProgress) => {
           },
           trail: {
             // Trail color
-            stroke: "#F0F0F0",
+            stroke: CONSTANTS.COLORS.primary + "50",
             // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
             strokeLinecap: 'butt',
             // Rotate the trail
             transform: 'rotate(0turn)',
             transformOrigin: 'center center',
-            strokeWidth: 7
-          },
+            strokeWidth: 5
+          }
         }}
       >
-        <span style={{ color: "#03414D", fontSize: 18, fontWeight: 700 }}>
+        {/* <span style={{ color: "#03414D", fontSize: 18, fontWeight: 700 }}>
           {value}%
-        </span>
+        </span> */}
         <img
-          style={{ width: 60, margin: 5, marginBottom: 10 }}
+          style={{ width: "40%", margin: 5, marginBottom: 10 }}
           src={icon}
           alt=""
         />
-        <span style={{ color: "#03414D", fontSize: 14, fontWeight: 700 }}>
+        <span style={{ color: "#03414D", fontSize: "75%", fontWeight: 700 }}>
           {label}
         </span>
       </CircularProgressbarWithChildren>

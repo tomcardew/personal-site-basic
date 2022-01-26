@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 20,
   },
   icon: {
     height: 24,
@@ -38,18 +37,23 @@ interface ILogoLabel {
   icon?: string;
   label?: string;
   prelabel?: string;
+  marginTop?: string | number;
+  marginBottom?: string | number;
 
   onClick?: () => void;
 }
 
-const LogoLabel = ({ icon, label, prelabel, onClick }: ILogoLabel) => {
+const LogoLabel = ({ icon, label, prelabel, onClick, marginBottom = 20, marginTop = 0 }: ILogoLabel) => {
   return (
-    <div className={css(styles.parent)}>
+    <div className={css(styles.parent)} style={{
+          marginTop: marginTop
+    }}>
       {prelabel && <span className={css(styles.prelabel)}>{prelabel}</span>}
       <div
         className={css(styles.container)}
         style={{
           cursor: onClick ? "pointer" : "default",
+          marginBottom: marginBottom
         }}
         onClick={onClick ? onClick : () => {}}
       >
