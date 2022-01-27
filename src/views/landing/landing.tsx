@@ -67,12 +67,7 @@ const LandingView = () => {
             <Container style={styles.special}>
                 <Section title="About me">
                     <div>
-                        I was born in 1997 in Morelia, Michoacán, México. I've been living here since then. From a
-                        young age I showed a remarkable fascination about how
-                        things work. I remember disassembling an old radio from
-                        my father just to see what was inside. I didn't assembly
-                        it back. <br />
-                        <br /> I'm a Computer Systems Engineer graduated from Instituto Tecnológico de Morelia in 2021.
+                        I'm a Computer Systems Engineer graduated from Instituto Tecnológico de Morelia in 2021.
                         I have an special interest in web technologies, such as
                         web developing, mobile apps, backend technologies and
                         cloud computing. I'm also planning to study a master on
@@ -162,7 +157,7 @@ const LandingView = () => {
                     <Horizontal>
                         <ExperienceCard
                             bgImage="/assets/icons/experience/grainchain.jpeg"
-                            company="GrainChain Inc."
+                            company="GrainChain"
                             icon="/assets/icons/grainchain.png"
                             time="Feb 2022 - Now"
                             job="iOS Developer"

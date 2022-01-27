@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     overflowY: 'scroll',
     "@media (max-width: 800px)": {
       flex: 1,
-      position: "fixed",
+      position: "absolute",
       top: 0,
       width: "100vw",
       zIndex: 100,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   parentOpen: {
     flex: 1,
-    position: "fixed",
+    position: "absolute",
     left: 0,
     top: 0,
     width: "calc(100vw - 10px)",
@@ -142,7 +142,7 @@ const SideMenu = () => {
       </div>
       <img
         className={css(styles.image)}
-        src="https://via.placeholder.com/150"
+        src="/assets/images/profile-min.jpg"
         alt="Mi foto"
       />
       <span className={css(styles.name)}>Andrés Villagomez Ríos</span>

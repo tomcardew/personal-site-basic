@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",
+    marginBottom: 5
   },
   container: {
     padding: 20,
@@ -47,6 +48,8 @@ const styles = StyleSheet.create({
     width: 40,
     objectFit: "contain",
     marginRight: 10,
+    borderRadius: 5,
+    
   },
   iconTitle: {
     color: "white",
@@ -55,8 +58,9 @@ const styles = StyleSheet.create({
   },
   timeTitle: {
     color: "white",
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: 600,
+    opacity: 0.75
   },
   jobTitle: {
     position: "absolute",
@@ -65,7 +69,8 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 22,
     fontWeight: 700,
-    width: "calc(100% - 40px)"
+    width: "calc(100% - 40px)",
+    lineHeight: 1.1
   },
 });
 

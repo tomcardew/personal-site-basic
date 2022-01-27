@@ -10,7 +10,9 @@ interface ICircularProgress {
 
 const CircularProgress = ({ value = 0, label, icon }: ICircularProgress) => {
   return ( 
-    <Col xl={2} lg={3} md={4} sm={6} xs={6}>
+    <Col xl={2} lg={3} md={4} sm={6} xs={6} style={{
+      marginTop: 10
+    }}>
       <CircularProgressbarWithChildren
         value={100}
         styles={{
