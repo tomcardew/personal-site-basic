@@ -85,6 +85,14 @@ const styles = StyleSheet.create({
     width: "100%",
     marginBottom: 10,
   },
+  btnMail: {
+    width: "100%",
+    marginBottom: 10,
+    backgroundColor: CONSTANTS.COLORS.primaryDark
+  },
+  btnMailText: {
+    color: 'white'
+  },
   sideButton: {
     position: "fixed",
     top: 10,
@@ -147,6 +155,14 @@ const SideMenu = () => {
       />
       <span className={css(styles.name)}>Andrés Villagomez Ríos</span>
       <span className={css(styles.career)}>Computer Systems Engineer</span>
+      <Button
+        label="Get in touch"
+        textStyle={styles.btnMailText}
+        style={styles.btnMail}
+        onClick={() =>
+          openUrl("mailto:tomcar97@gmail.com?subject=Wanna%20get%20in%20touch&body=Hey!")
+        }
+      />
       <Button
         label="Download my resume"
         style={styles.btn}

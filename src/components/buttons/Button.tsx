@@ -21,14 +21,15 @@ const styles = StyleSheet.create({
 interface IButton {
   label?: string;
   style?: any;
+  textStyle?: any;
 
   onClick?: () => void
 }
 
-const Button = ({ label, style, onClick = () => {} }: IButton) => {
+const Button = ({ label, style, textStyle, onClick = () => {} }: IButton) => {
   return (
     <div className={css(styles.container, style)} onClick={onClick}>
-      <span className={css(styles.label)}>{label}</span>
+      <span className={css(styles.label, textStyle)}>{label}</span>
     </div>
   );
 };
