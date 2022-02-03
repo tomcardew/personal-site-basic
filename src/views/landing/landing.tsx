@@ -58,6 +58,13 @@ const styles = StyleSheet.create({
             marginTop: 50,
         },
     },
+    version: {
+        position: 'absolute',
+        right: 20,
+        bottom: 10,
+        fontSize: 10,
+        opacity: 0.5
+    }
 });
 
 const LandingView = () => {
@@ -181,6 +188,7 @@ const LandingView = () => {
                         />
                     </Horizontal>
                 </Section>
+                <span className={css(styles.version)}>Last update: Feb 03, 2022</span>
             </Container>
         </div>
     );
