@@ -186,6 +186,22 @@ const LandingView = () => {
                             job="Development Coordinator"
                             url="https://digitalignition.com.mx/"
                         />
+                        <ExperienceCard
+                            bgImage="/assets/icons/experience/nosotras.jpg"
+                            company="Wikipolítica Michoacán"
+                            icon="/assets/icons/wikipolitica-logo.gif"
+                            time="Feb 2019 - Now (Consultancy)"
+                            job="Assemblyman"
+                            url="http://wikipoliticamich.mx/"
+                        />
+                        <ExperienceCard
+                            bgColor="linear-gradient(180deg, rgba(208,218,228,1) 0%, rgba(125,147,161,1) 100%)"
+                            company="PoderNet"
+                            icon="/assets/icons/podernet.png"
+                            time="June - July 2018"
+                            job="Technical Support"
+                            url="http://www.podernet.com.mx/index.html"
+                        />
                     </Horizontal>
                 </Section>
                 <span className={css(styles.version)}>Last update: Feb 03, 2022</span>

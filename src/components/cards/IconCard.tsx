@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   icon: {
-    height: 60,
-    width: 60,
+    height: 80,
+    width: 80,
     objectFit: "contain",
   },
   title: {
