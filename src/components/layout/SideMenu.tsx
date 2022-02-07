@@ -4,6 +4,7 @@ import { CONSTANTS } from "../../utils";
 import { Button, Separator } from "../buttons";
 import { LogoLabel } from "../labels";
 import { useState } from "react";
+import { getAnalytics, logEvent } from 'firebase/analytics'
 
 const styles = StyleSheet.create({
   parent: {
@@ -131,6 +132,7 @@ const styles = StyleSheet.create({
 });
 
 const SideMenu = () => {
+  const analytics = getAnalytics()
   const [menu, setMenu] = useState<boolean>(false);
   const toggleMenu = () => {
     setMenu(!menu);
@@ -160,15 +162,19 @@ const SideMenu = () => {
         textStyle={styles.btnMailText}
         style={styles.btnMail}
         onClick={() =>
+        {
+          logEvent(analytics, "get_in_touch")
           openUrl("mailto:tomcar97@gmail.com?subject=Wanna%20get%20in%20touch&body=Hey!")
+          }
         }
       />
       <Button
         label="Download my resume"
         style={styles.btn}
-        onClick={() =>
+        onClick={() => {
+          logEvent(analytics, "cv_opened")
           openUrl("/assets/documents/CV-Feb2022-AndresVillagomez.pdf")
-        }
+        }}
       />
       <Separator />
       <LogoLabel
@@ -185,15 +191,21 @@ const SideMenu = () => {
         icon="/assets/icons/linkedin.svg"
         label="LinkedIn profile"
         onClick={() =>
+        {
+          logEvent(analytics, 'linkedin_open')
           openUrl(
             "https://www.linkedin.com/in/andr%C3%A9s-villag%C3%B3mez-7832aa181/"
           )
+          }
         }
       />
       <LogoLabel
         icon="/assets/icons/github.svg"
         label="GitHub"
-        onClick={() => openUrl("https://github.com/tomcardew")}
+        onClick={() => {
+          logEvent(analytics, 'github_opened')
+          openUrl("https://github.com/tomcardew")
+        }}
       />
     </Container>
   );
