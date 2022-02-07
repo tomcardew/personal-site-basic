@@ -167,7 +167,7 @@ const SideMenu = () => {
         label="Download my resume"
         style={styles.btn}
         onClick={() =>
-          openUrl("/assets/documents/CV-Ago2021-AndresVillagomez.pdf")
+          openUrl("/assets/documents/CV-Feb2022-AndresVillagomez.pdf")
         }
       />
       <Separator />
