@@ -1,17 +1,11 @@
 {
   "hosting": {
+    "site": "andresvr",
     "public": "build",
-    "target": "prod",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
     ]
   }
 }

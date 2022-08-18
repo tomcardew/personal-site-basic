@@ -58,12 +58,15 @@ const styles = StyleSheet.create({
             marginTop: 50,
         },
     },
-    version: {
+    made: {
         position: 'absolute',
         right: 20,
         bottom: 10,
-        fontSize: 10,
-        opacity: 0.5
+        fontSize: 12,
+    },
+    version: {
+        opacity: 0.5,
+        marginLeft: 10
     }
 });
 
@@ -74,7 +77,7 @@ const LandingView = () => {
             <Container style={styles.special}>
                 <Section title="About me">
                     <div>
-                        I'm a Computer Systems Engineer graduated from Instituto Tecnológico de Morelia in 2021.
+                        I'm a Computer Systems Engineer graduated from Instituto Tecnológico de Morelia in 2020 and got my degree in 2021.
                         I have an special interest in web technologies, such as
                         web developing, mobile apps, backend technologies and
                         cloud computing. I'm also planning to study a master on
@@ -163,6 +166,14 @@ const LandingView = () => {
                 <Section title="Experience">
                     <Horizontal>
                         <ExperienceCard
+                            bgImage="/assets/icons/experience/phase2.png"
+                            company="Phase2 Technology"
+                            icon="/assets/icons/phase2.png"
+                            time="May 2022 - Now"
+                            job="Mobile Developer"
+                            url="https://www.phase2technology.com/"
+                        />
+                        <ExperienceCard
                             bgImage="/assets/icons/experience/grainchain.jpeg"
                             company="GrainChain"
                             icon="/assets/icons/grainchain.png"
@@ -190,21 +201,19 @@ const LandingView = () => {
                             bgImage="/assets/icons/experience/nosotras.jpg"
                             company="Wikipolítica Michoacán"
                             icon="/assets/icons/wikipolitica-logo.gif"
-                            time="Feb 2019 - Now (Consultancy)"
+                            time="Feb 2019 - 2022"
                             job="Assemblyman"
                             url="http://wikipoliticamich.mx/"
                         />
-                        <ExperienceCard
-                            bgColor="linear-gradient(180deg, rgba(208,218,228,1) 0%, rgba(125,147,161,1) 100%)"
-                            company="PoderNet"
-                            icon="/assets/icons/podernet.png"
-                            time="June - July 2018"
-                            job="Technical Support"
-                            url="http://www.podernet.com.mx/index.html"
-                        />
                     </Horizontal>
                 </Section>
-                <span className={css(styles.version)}>Last update: Feb 03, 2022</span>
+                <span className={css(styles.made)}>
+                    Made with <span style={{
+                        color: 'red',
+                        fontSize: 16
+                    }}>♥</span> by Andrés Villagómez
+                    <span className={css(styles.version)}>Last update: Aug 18, 2022</span>
+                </span>
             </Container>
         </div>
     );
