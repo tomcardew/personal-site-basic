@@ -4,7 +4,7 @@ import { CONSTANTS } from "../../utils";
 import { Button, Separator } from "../buttons";
 import { LogoLabel } from "../labels";
 import { useState } from "react";
-import { getAnalytics, logEvent } from 'firebase/analytics'
+import { getAnalytics, logEvent } from "firebase/analytics";
 
 const styles = StyleSheet.create({
   parent: {
@@ -17,8 +17,7 @@ const styles = StyleSheet.create({
     height: "calc(100vh - 20px)",
     transition: "100ms linear all",
     alignItems: "center",
-    backgroundColor: 'white',
-    overflowY: 'scroll',
+    overflowY: "auto",
     "@media (max-width: 800px)": {
       flex: 1,
       position: "absolute",
@@ -27,14 +26,14 @@ const styles = StyleSheet.create({
       zIndex: 100,
       height: "100vh",
       transition: "100ms linear all",
-      left: 'calc((100vw + 10px)*-1)',
+      left: "calc((100vw + 10px)*-1)",
     },
     "::-webkit-scrollbar": {
-      width: 2
+      width: 2,
     },
     "::-webkit-scrollbar-thumb": {
-      background: CONSTANTS.COLORS.primary
-    }
+      background: CONSTANTS.COLORS.primary,
+    },
   },
   parentOpen: {
     flex: 1,
@@ -46,7 +45,7 @@ const styles = StyleSheet.create({
     height: "100vh",
     transition: "100ms linear all",
     alignItems: "center",
-    backgroundColor: 'white',
+    overflow: 'auto',
     "@media (min-width: 800px)": {
       flex: 1,
       position: "fixed",
@@ -56,7 +55,10 @@ const styles = StyleSheet.create({
       zIndex: 100,
       height: "calc(100vh - 20px)",
       transition: "100ms linear all",
-    },
+    }
+  },
+  parentDark: {
+    backgroundColor: "black",
   },
   image: {
     borderRadius: 10,
@@ -82,6 +84,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 25,
   },
+  careerDark: {
+    color: "#FFFFFF",
+  },
   btn: {
     width: "100%",
     marginBottom: 10,
@@ -89,10 +94,10 @@ const styles = StyleSheet.create({
   btnMail: {
     width: "100%",
     marginBottom: 10,
-    backgroundColor: CONSTANTS.COLORS.primaryDark
+    backgroundColor: CONSTANTS.COLORS.primaryDark,
   },
   btnMailText: {
-    color: 'white'
+    color: "white",
   },
   sideButton: {
     position: "fixed",
@@ -118,21 +123,28 @@ const styles = StyleSheet.create({
     margin: 0,
   },
   blackBg: {
-    position: 'fixed',
+    position: "fixed",
     top: 0,
     left: 0,
-    width: '100vw',
-    height: '100vh',
-    backgroundColor: 'white',
+    width: "100vw",
+    height: "100vh",
+    backgroundColor: "white",
     zIndex: -10,
     "@media (min-width: 800px)": {
-      display: "none"
+      display: "none",
     },
+  },
+  blackBgDark: {
+    backgroundColor: 'black'
   }
 });
 
-const SideMenu = () => {
-  const analytics = getAnalytics()
+interface ISideMenu {
+  darkMode?: boolean;
+}
+
+const SideMenu = ({ darkMode = false }: ISideMenu) => {
+  const analytics = getAnalytics();
   const [menu, setMenu] = useState<boolean>(false);
   const toggleMenu = () => {
     setMenu(!menu);
@@ -141,8 +153,12 @@ const SideMenu = () => {
     window.open(path, "_blank");
   };
   return (
-    <Container style={menu ? styles.parentOpen : styles.parent} minWidth={250}>
-      {menu ? <div className={css(styles.blackBg)} /> : <div />}
+    <Container
+      style={menu ? styles.parentOpen : styles.parent}
+      darkMode={darkMode}
+      minWidth={250}
+    >
+      {menu ? <div className={css(styles.blackBg, darkMode ? styles.blackBgDark : null)} /> : <div />}
       <div className={css(styles.sideButton)} onClick={toggleMenu}>
         <img
           className={css(styles.icon)}
@@ -156,24 +172,26 @@ const SideMenu = () => {
         alt="Mi foto"
       />
       <span className={css(styles.name)}>Andrés Villagomez Ríos</span>
-      <span className={css(styles.career)}>Computer Systems Engineer</span>
+      <span className={css(styles.career, darkMode ? styles.careerDark : null)}>
+        Computer Systems Engineer
+      </span>
       <Button
         label="Get in touch"
         textStyle={styles.btnMailText}
         style={styles.btnMail}
-        onClick={() =>
-        {
-          logEvent(analytics, "get_in_touch")
-          openUrl("mailto:tomcar97@gmail.com?subject=Wanna%20get%20in%20touch&body=Hey!")
-          }
-        }
+        onClick={() => {
+          logEvent(analytics, "get_in_touch");
+          openUrl(
+            "mailto:tomcar97@gmail.com?subject=Wanna%20get%20in%20touch&body=Hey!"
+          );
+        }}
       />
       <Button
         label="Download my resume"
         style={styles.btn}
         onClick={() => {
-          logEvent(analytics, "cv_opened")
-          openUrl("/assets/documents/CV-Feb2022-AndresVillagomez.pdf")
+          logEvent(analytics, "cv_opened");
+          openUrl("/assets/documents/CV-Feb2022-AndresVillagomez.pdf");
         }}
       />
       <Separator />
@@ -184,27 +202,33 @@ const SideMenu = () => {
         onClick={() => openUrl("https://www.grainchain.io/")}
         marginBottom={10}
         marginTop={10}
+        darkMode={darkMode}
       />
       <Separator />
-      <LogoLabel icon="/assets/icons/cake.svg" label="May 09, 1997" marginTop={10} />
       <LogoLabel
-        icon="/assets/icons/linkedin.svg"
-        label="LinkedIn profile"
-        onClick={() =>
-        {
-          logEvent(analytics, 'linkedin_open')
-          openUrl(
-            "https://www.linkedin.com/in/andr%C3%A9s-villag%C3%B3mez-7832aa181/"
-          )
-          }
-        }
+        darkMode={darkMode}
+        icon={ darkMode ? '/assets/icons/cake-dark.png' : '/assets/icons/cake-light.png' }
+        label="May 09, 1997"
+        marginTop={10}
       />
       <LogoLabel
-        icon="/assets/icons/github.svg"
-        label="GitHub"
+        icon={ darkMode ? '/assets/icons/linkedin-dark.png' : '/assets/icons/linkedin-light.png' }
+        label="LinkedIn profile"
+        darkMode={darkMode}
         onClick={() => {
-          logEvent(analytics, 'github_opened')
-          openUrl("https://github.com/tomcardew")
+          logEvent(analytics, "linkedin_open");
+          openUrl(
+            "https://www.linkedin.com/in/andr%C3%A9s-villag%C3%B3mez-7832aa181/"
+          );
+        }}
+      />
+      <LogoLabel
+        icon={ darkMode ? '/assets/icons/github-dark.png' : '/assets/icons/github-light.png' }
+        label="GitHub"
+        darkMode={darkMode}
+        onClick={() => {
+          logEvent(analytics, "github_opened");
+          openUrl("https://github.com/tomcardew");
         }}
       />
     </Container>

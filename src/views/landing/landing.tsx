@@ -1,12 +1,14 @@
 import { css, StyleSheet } from "aphrodite";
 import { Skill, ExperienceCard, IconCard } from "../../components/cards";
+import { IconButton } from "../../components/buttons";
 import {
   Container,
   Horizontal,
   Section,
   SideMenu,
 } from "../../components/layout";
-import { CONSTANTS } from "../../utils";
+import { CONSTANTS, getFromLocalStorage, saveToLocalStorage } from "../../utils";
+import { useEffect, useState } from "react";
 
 const styles = StyleSheet.create({
   parent: {
@@ -54,6 +56,16 @@ const styles = StyleSheet.create({
       marginTop: 50,
     },
   },
+  specialDark: {
+    marginLeft: 300,
+    transition: "100ms linear all",
+    "@media (max-width: 800px)": {
+      marginLeft: 10,
+      marginTop: 50,
+    },
+    backgroundColor: 'black',
+    color: 'white'
+  },
   made: {
     position: "absolute",
     right: 20,
@@ -67,11 +79,26 @@ const styles = StyleSheet.create({
 });
 
 const LandingView = () => {
+
+  const [darkMode, setDarkMode] = useState(false)
+  const lightModeIcon = "assets/icons/darkmode/light.png"
+  const darkModeIcon = "assets/icons/darkmode/dark.png"
+
+  useEffect(() => {
+    setDarkMode(getFromLocalStorage("darkMode") == "true")
+  })
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode)
+    saveToLocalStorage("darkMode", `${!darkMode}`)
+  }
+
   return (
     <div className={css(styles.parent)}>
-      <SideMenu />
-      <Container style={styles.special}>
-        <Section title="About me">
+      <SideMenu darkMode={darkMode} />
+      <Container style={styles.special} darkMode={darkMode}>
+        <IconButton onClick={toggleDarkMode} darkMode={darkMode} icon={ darkMode ? darkModeIcon : lightModeIcon } />
+        <Section darkMode={darkMode} title="About me">
           <div>
             I'm a Computer Systems Engineer graduated from Instituto Tecnológico
             de Morelia in 2020 and got my degree in 2021. I have an special
@@ -92,7 +119,7 @@ const LandingView = () => {
             roadtrip.
           </div>
         </Section>
-        <Section title="My services">
+        <Section darkMode={darkMode} title="My services">
           <Horizontal>
             <IconCard label="Web Development" icon="/assets/icons/web.png" />
             <IconCard
@@ -107,7 +134,7 @@ const LandingView = () => {
             />
           </Horizontal>
         </Section>
-        <Section title="Code skills">
+        <Section darkMode={darkMode} title="Code skills">
           <Horizontal>
             <Skill
               value={80}
@@ -128,7 +155,7 @@ const LandingView = () => {
             <Skill value={99} label="SQL" icon="/assets/icons/skills/sql.png" />
           </Horizontal>
         </Section>
-        <Section title="Experience">
+        <Section darkMode={darkMode} title="Experience">
           <Horizontal>
             <ExperienceCard
               bgImage="/assets/icons/experience/phase2.png"

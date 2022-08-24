@@ -8,7 +8,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     margin: 0,
     position: "relative",
+    backgroundColor: 'white'
   },
+  containerDark: {
+    backgroundColor: 'black',
+    color: 'white'
+  }
 });
 
 interface IContainer {
@@ -17,23 +22,23 @@ interface IContainer {
   minWidth?: number;
   style?: any;
   classname?: string;
+  darkMode?: boolean;
 
   children?: JSX.Element | JSX.Element[] | string | string[];
 }
 
 const Container = ({
-  backgroundColor = "white",
   flex = 1,
   minWidth = 0,
   style,
   children,
   classname = "",
+  darkMode = false
 }: IContainer) => {
   return (
     <div
-      className={css(styles.container, style) + ` ${classname}`}
+      className={css(styles.container, style, darkMode ? styles.containerDark : null) + ` ${classname}`}
       style={{
-        backgroundColor,
         flex,
         minWidth,
       }}
